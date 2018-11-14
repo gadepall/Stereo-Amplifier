@@ -15,7 +15,7 @@
 \usepackage{multicol}
 \usepackage{enumerate}
 \usepackage{amssymb}
-%\usepackage{iithtlc}
+\usepackage{iithtlc}
 \usepackage{graphicx}
 \usepackage{newfloat}
 %\usepackage{syntax}
@@ -223,8 +223,8 @@ breaklines=true
 \vspace{3cm}
 
 \title{ 
-	{
-Stereo Speaker
+	\logo{
+AC/DC Converter: Stereo Speaker
 	}
 }
 
@@ -240,13 +240,14 @@ Stereo Speaker
 
 \begin{abstract}
 	
-	In this manual we will be making a stereo speaker which will take input from a device and then amplify it and give output through speaker.
+	In this manual we will be making a stereo speaker which will take audio input, 
+amplify it and give output through speaker.
 	
 \end{abstract}
 
 %\section{AC-DC Converter}
 \section{Components}
-\begin{table}[!h]
+\begin{table}[!ht]
 \centering
 \input{./figs/components.tex}
 \caption{}
@@ -259,9 +260,19 @@ Stereo Speaker
 %\item Voltage Regulator - LM7809
 %\item Audio Amplifier IC - LM386
 %\end{enumerate}
-\section{Circuit Diagram for converting 230V AC to 12V DC }
-The circuit diagram is shown in \ref{fig1}
-\begin{figure}[!h]
+\section{Connections}
+%\subsection{Steps to Convert 230V AC to 5V , 2A DC}
+%\subsubsection{Step Down the Voltage Level}
+%\begin{problem}
+%How can you convert 23V AC voltage to 12V DC voltage?
+%\end{problem} 
+%230V AC is converted into 12V AC using a step-down transformer. 
+%12V output of step-down transformer is an RMS %value and its peak value is given by the product %of square root of two with RMS value, which is %approximately 17V.
+\begin{problem}
+Connect the 230V AC supply to the input of the step-down transformer as shown in Fig \ref{fig1}.
+%Connect the 230V AC supply to the input of the step-down transformer.
+\end{problem}
+\begin{figure}[!ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{./figs/acdc.tex}
@@ -269,6 +280,21 @@ The circuit diagram is shown in \ref{fig1}
 \caption{AC-DC circuit diagram} 
 \label{fig1}
 \end{figure}
+
+\begin{problem}
+Verify that the output of the transformer is 12 V AC.  What is the frequency?
+\end{problem}
+\begin{problem}
+Connect the 4 diodes in bridge.
+%Connect the 230V AC supply to the input of the step-down transformer.
+\end{problem}
+\begin{problem}
+Connect the output of the transformer to the to the juction of diodes D1, D2 and D3 , D4 .
+%Connect the 230V AC supply to the input of the step-down transformer.
+\end{problem}
+
+%\section{Circuit Diagram for converting 230V AC to 12V DC }
+%The circuit diagram is shown in \ref{fig1}
 
 \begin{problem}
 Measure the voltage and frequency at the input and output of transformer.
@@ -280,26 +306,6 @@ The input voltage is 230V @ 50 Hz and output of transformer is approximately 20V
 %\begin{figure}
  %      \centering  
 
-\section{Connections}
-%\subsection{Steps to Convert 230V AC to 5V , 2A DC}
-%\subsubsection{Step Down the Voltage Level}
-%\begin{problem}
-%How can you convert 23V AC voltage to 12V DC voltage?
-%\end{problem} 
-%230V AC is converted into 12V AC using a step-down transformer. 
-%12V output of step-down transformer is an RMS %value and its peak value is given by the product %of square root of two with RMS value, which is %approximately 17V.
-\begin{problem}
-Connect the 230V AC supply to the input of the step-down transformer.
-%Connect the 230V AC supply to the input of the step-down transformer.
-\end{problem}
-\begin{problem}
-Connect the 4 diodes in bridge as shown in fig \ref{fig1} .
-%Connect the 230V AC supply to the input of the step-down transformer.
-\end{problem}
-\begin{problem}
-Connect the 12V and GND wires of the transformer to the to the juction of diodes D1, D2 and D3 , D4 .
-%Connect the 230V AC supply to the input of the step-down transformer.
-\end{problem}
 %Connect the 230V AC supply to the input of the step-down transformer.
 
 %\subsubsection{Convert AC to DC}
@@ -317,13 +323,13 @@ The observed output of the Bridge Rectifier between junctions of D1,D4 and D2,D3
 %AC power can be converted into DC using one of the power electronic converters called as Rectifier. The bridge rectifier is frequently used for converting AC to DC. \\
 %Bridge rectifier consists of four diodes which are connected in the form a bridge. We know that the diode is an uncontrolled rectifier which will conduct only forward bias and will not conduct during the reverse bias. If the diode anode voltage is greater than the cathode voltage then the diode is said to be in forward bias. During positive half cycle, diodes D2 and D4 will conduct and during negative half cycle diodes D1 and D3 will conduct. Thus, AC is converted into DC; here the obtained is not a pure DC as it consists of pulses. Hence, it is called as pulsating DC power. But voltage drop across the diodes is (2*0.7V) 1.4V; therefore, the peak voltage at the output of this retifier circuit is 15V (17-1.4) approx.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
-	\includegraphics[scale=0.4]{./figs/sine.eps}
+	\includegraphics[width=\columnwidth]{./figs/sine.eps}
 	\caption{Rectified Wave}  \label{fig2}
     \end{figure}
 
-\section{Functioning}
+\section{Regulator}
 \subsection{Ripple Filter}
 %\begin{problem}
 %What is the role of the capacitor in the circuit?
@@ -331,41 +337,43 @@ The observed output of the Bridge Rectifier between junctions of D1,D4 and D2,D3
 %\solution
 %The output of the diode bridge is a DC consisting of ripples also called as pulsating DC. This pulsating DC can be filtered using an inductor filter or a capacitor filter or a resistor-capacitor-coupled filter for removing the ripples. Consider a capacitor filter which is frequently used in most cases for smoothing.
 \begin{problem}
-The output of the diode bridge is a DC consisting of ripples also called as pulsating DC. This pulsating DC can be filtered using  capacitor filter.Connect a capacitor across the bridge as shown in figure 2.0. 
+The capacitor in Fig. \ref{fig1} acts as a ripple filter.  Sketch its output.
 \end{problem}
-\begin{problem}
-The observed output of the capacitor filter is as shown in Fig.\ref{fig3}.
-\end{problem}
+\solution
+See  Fig. \ref{fig3}.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
-	\includegraphics[scale=0.4]{./figs/cap.png}
+	\includegraphics[width=\columnwidth]{./figs/cap.eps}
 	\caption{Rectified Wave with Capacitive filter}  \label{fig3}
     \end{figure}
 
 \subsection{Voltage Regulator}
-The pin description of LM7809 is shown in Fig. \ref{fig4}
-\begin{figure}[h]
+
+\begin{problem}
+Connect pin 1 and pin 2 of LM7809 to positive and Ground terminals of 220 uF capacitor and pin 3 to 
+the positive of another 220 uF capacitor. Connect other end of capacitor to ground. 
+See Figs. \ref{fig4} and \ref{lm7809}
+\end{problem} 
+\begin{figure}[!ht]
 \centering
-	\includegraphics[scale=0.4]{./figs/ic.jpg}
+	\includegraphics[width=\columnwidth]{./figs/ic.eps}
 	\caption{LM7809}  \label{fig4}
     \end{figure}
 
+
 \begin{problem}
-Connect pin 1 and pin 2 of LM7809 to positive and Ground terminals of 220 uF capacitor and pin 3 to the positive of another 220 uF capacitor. Connect other end of capacitor to ground. The circuit is as shown in Fig. \ref{lm7809} 
-\begin{figure}[h]
-\centering
-	\includegraphics[scale=0.5]{./figs/lm7809.png}
-	\caption{LM 7809 connections}  \label{lm7809}
-    \end{figure}
-\end{problem} 
-\begin{problem}
-Measure the Voltage across pin 3 and Ground of LM7805. What do you observe?
+Measure the Voltage across pin 3 and Ground of LM7809. What do you observe?
 \end{problem}
 \solution
 The output voltage is observed to be 9V.
+\begin{figure}[!ht]
+\centering
+	\includegraphics[width=\columnwidth]{./figs/lm7809.eps}
+	\caption{LM 7809 connections}  \label{lm7809}
+    \end{figure}
 
-\section{Circuit for audio amplification}
+\section{Audio amplification}
 
 %\begin{problem}
 %What is the role of the capacitor in the circuit?
@@ -376,19 +384,20 @@ The output voltage is observed to be 9V.
 Connect the 9V obtained from the previous circuit to pin 6  and ground to pin 2 and 4 of LM386 IC.
 \end{problem}
 \begin{problem}
-Connection points for the audio jack are as shown in Fig.\ref{fig5}
+Connection points for the audio jack are as shown in Fig. \ref{fig5}
 \end{problem}
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
-	\includegraphics[scale=0.2]{./figs/jack.jpg}
+	\includegraphics[scale=0.2]{./figs/jack.eps}
 	\caption{Audio Jack connection points}  \label{fig5}
     \end{figure}
 \begin{problem}
-Connect one input from audio jack to pin 3 of LM386 IC with a variable resistor in series (you can use potentiometer instead of variable resistor). See Fig. \ref{fig6} for reference
+Connect one input from audio jack to pin 3 of LM386 IC with a variable resistor in series (you can 
+use potentiometer instead of variable resistor). See Fig. \ref{fig6}. 
 \end{problem}
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
-	\includegraphics[scale=0.4]{./figs/LM386.jpg}
+	\includegraphics[width=\columnwidth]{./figs/LM386.eps}
 	\caption{LM386}  \label{fig6}
     \end{figure}
 
